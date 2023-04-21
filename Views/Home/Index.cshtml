@@ -1,0 +1,308 @@
+﻿@{
+    ViewData["Title"] = "Anasayfa";
+}
+
+<div id="layoutSidenav_content">
+    <main>
+        <div class="container-fluid px-4">
+            <h1 class="mt-4">İş Takip Sistemi</h1>
+            <ol class="breadcrumb mb-4">
+                <li class="breadcrumb-item active">Rapor</li>
+            </ol>
+            <div class="row">
+                <div class="col-xl-3 col-md-6">
+                    <div class="card bg-primary text-white mb-4">
+                        <div class="card-body">Primary Card</div>
+                        <div class="card-footer d-flex align-items-center justify-content-between">
+                            <a class="small text-white stretched-link" href="#">View Details</a>
+                            <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-md-6">
+                    <div class="card bg-warning text-white mb-4">
+                        <div class="card-body">Warning Card</div>
+                        <div class="card-footer d-flex align-items-center justify-content-between">
+                            <a class="small text-white stretched-link" href="#">View Details</a>
+                            <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-md-6">
+                    <div class="card bg-success text-white mb-4">
+                        <div class="card-body">Success Card</div>
+                        <div class="card-footer d-flex align-items-center justify-content-between">
+                            <a class="small text-white stretched-link" href="#">View Details</a>
+                            <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-md-6">
+                    <div class="card bg-danger text-white mb-4">
+                        <div class="card-body">Danger Card</div>
+                        <div class="card-footer d-flex align-items-center justify-content-between">
+                            <a class="small text-white stretched-link" href="#">View Details</a>
+                            <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="row">
+                <div class="col-xl-6">
+                    <div class="card mb-4">
+                        <div class="container">
+                            <h2>Rapor</h2>
+                            <table class="table table-striped table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>Kişi</th>
+                                        <th>Aktif İşler</th>
+                                        <th>Tamamlanan İşler</th>
+                                        <th>Toplam</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr data-toggle="collapse" data-target="#ahmet-detay">
+                                        <td>Ahmet</td>
+                                        <td>5</td>
+                                        <td>3</td>
+                                        <td>8</td>
+                                    </tr>
+                                    <tr id="ahmet-detay" class="collapse">
+                                        <td colspan="4">
+                                            <p><strong>Ahmet</strong> adlı kişinin iş detayları:</p>
+                                            <ul>
+                                                <li>Proje A: 3 tamamlanan, 2 aktif iş</li>
+                                                <li>Proje B: 0 tamamlanan, 3 aktif iş</li>
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                    <tr data-toggle="collapse" data-target="#mehmet-detay">
+                                        <td>Mehmet</td>
+                                        <td>3</td>
+                                        <td>5</td>
+                                        <td>8</td>
+                                    </tr>
+                                    <tr id="mehmet-detay" class="collapse">
+                                        <td colspan="4">
+                                            <p><strong>Mehmet</strong> adlı kişinin iş detayları:</p>
+                                            <ul>
+                                                <li>Proje X: 2 tamamlanan, 1 aktif iş</li>
+                                                <li>Proje Y: 3 tamamlanan, 2 aktif iş</li>
+                                                <li>Proje Z: 0 tamamlanan, 0 aktif iş</li>
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                    <tr data-toggle="collapse" data-target="#ayse-detay">
+                                        <td>Ayşe</td>
+                                        <td>4</td>
+                                        <td>2</td>
+                                        <td>6</td>
+                                    </tr>
+                                    <tr id="ayse-detay" class="collapse">
+                                        <td colspan="4">
+                                            <p><strong>Ayşe</strong> adlı kişinin iş detayları:</p>
+                                            <ul>
+                                                <li>Proje K: 4 tamamlanan, 0 aktif iş</li>
+                                                <li>Proje L: 0 tamamlanan, 2 aktif iş</li>
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-xl-6">
+                    <div class="card mb-4">
+
+                        <div class="container">
+                            <h2>Bana Atanan İşler</h2>
+                            <table class="table table-striped table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>Kişi</th>
+                                        <th>Aktif İşler</th>
+                                        <th>Tamamlanan İşler</th>
+                                        <th>Toplam</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr data-toggle="collapse" data-target="#ahmet-detay">
+                                        <td>Ahmet</td>
+                                        <td>5</td>
+                                        <td>3</td>
+                                        <td>8</td>
+                                    </tr>
+                                    <tr id="ahmet-detay" class="collapse">
+                                        <td colspan="4">
+                                            <p><strong>Ahmet</strong> adlı kişinin iş detayları:</p>
+                                            <ul>
+                                                <li>Proje A: 3 tamamlanan, 2 aktif iş</li>
+                                                <li>Proje B: 0 tamamlanan, 3 aktif iş</li>
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                    <tr data-toggle="collapse" data-target="#mehmet-detay">
+                                        <td>Mehmet</td>
+                                        <td>3</td>
+                                        <td>5</td>
+                                        <td>8</td>
+                                    </tr>
+                                    <tr id="mehmet-detay" class="collapse">
+                                        <td colspan="4">
+                                            <p><strong>Mehmet</strong> adlı kişinin iş detayları:</p>
+                                            <ul>
+                                                <li>Proje X: 2 tamamlanan, 1 aktif iş</li>
+                                                <li>Proje Y: 3 tamamlanan, 2 aktif iş</li>
+                                                <li>Proje Z: 0 tamamlanan, 0 aktif iş</li>
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                    <tr data-toggle="collapse" data-target="#ayse-detay">
+                                        <td>Ayşe</td>
+                                        <td>4</td>
+                                        <td>2</td>
+                                        <td>6</td>
+                                    </tr>
+                                    <tr id="ayse-detay" class="collapse">
+                                        <td colspan="4">
+                                            <p><strong>Ayşe</strong> adlı kişinin iş detayları:</p>
+                                            <ul>
+                                                <li>Proje K: 4 tamamlanan, 0 aktif iş</li>
+                                                <li>Proje L: 0 tamamlanan, 2 aktif iş</li>
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="card mb-4">
+
+                <div class="row">
+                    <div class="col-xl-6">
+                        <div class="card mb-4">
+                            <div class="container">
+                                <h2> Son Yorumlar</h2>
+                                <div class="card mb-3">
+                                    <div class="card-body">
+                                        <h5 class="card-title">John Doe</h5>
+                                        <p class="card-text">
+                                            Lorem ipsum dolor sit amet, consectetur adipiscing
+                                            elit. Nunc id scelerisque urna. Nam eget nisl enim. Vestibulum ante
+                                            ipsum primis in faucibus orci luctus et ultrices posuere cubilia
+                                            curae; Donec bibendum velit eget purus aliquam, non eleifend tortor
+                                            elementum.
+                                        </p>
+                                    </div>
+                                    <div class="card-footer">
+                                        <small class="text-muted">2 gün önce</small>
+                                        <th> - <a href="#">Çiğdem</a></th>
+                                    </div>
+                                </div>
+
+                                <div class="card mb-3">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Jane Doe</h5>
+                                        <p class="card-text">
+                                            Sed in interdum urna. Duis tincidunt, quam a
+                                            maximus consequat, enim turpis eleifend odio, vel euismod odio velit
+                                            sit amet nulla. Quisque ullamcorper risus sed mauris ullamcorper, ac
+                                            malesuada enim posuere.
+                                        </p>
+                                    </div>
+                                    <div class="card-footer">
+                                        <small class="text-muted">1 gün önce</small>
+                                    </div>
+                                </div>
+
+                                <div class="card mb-3">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Bob Smith</h5>
+                                        <p class="card-text">
+                                            Maecenas sed lacus non est fringilla commodo at non
+                                            nibh. Praesent et pellentesque quam. Donec ac magna in sapien
+                                            fermentum elementum.
+                                        </p>
+                                    </div>
+                                    <div class="card-footer">
+                                        <small class="text-muted">5 gün önce</small>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="col-xl-6">
+                        <div class="card mb-4">
+                            <div class="container">
+                                <h2>Tüm İşler</h2>
+                                <table class="table table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th>İş</th>
+                                            <th>Durum</th>
+                                            <th>Atayan</th>
+                                            <th>Son Güncelleme</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>1</td>
+                                            <td>Web sitesi yenileme</td>
+                                            <td><span class="badge badge-success">Tamamlandı</span></td>
+                                            <td>John Doe</td>
+                                            <td>2 gün önce</td>
+                                        </tr>
+                                        <tr>
+                                            <td>2</td>
+                                            <td>Yazılım Geliştirme</td>
+                                            <td><span class="badge badge-warning">Devam Ediyor</span></td>
+                                            <td>Jane Smith</td>
+                                            <td>1 gün önce</td>
+                                        </tr>
+                                        <tr>
+                                            <td>3</td>
+                                            <td>Mobil Uygulama Geliştirme</td>
+                                            <td><span class="badge badge-danger">Önemli</span></td>
+                                            <td>Bob Johnson</td>
+                                            <td>5 gün önce</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <a href="/Home/Tables" class="btn btn-primary">Tümünü Göster</a>
+                                <br />
+                                <br />
+
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer class="py-4 bg-light mt-auto">
+        <div class="container-fluid px-4">
+            <div class="d-flex align-items-center justify-content-between small">
+                <div class="text-muted">Copyright &copy; Your Website 2023</div>
+                <div>
+                    <a href="#">Privacy Policy</a>
+                    &middot;
+                    <a href="#">Terms &amp; Conditions</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+</div>
+    </div>
