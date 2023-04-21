@@ -10,11 +10,17 @@ namespace TaskTracking.Controllers
         }
 
 
+        
 
         public IActionResult Password()
         {
 
             return View("Password");
+        }
+
+        public IActionResult Register() { 
+        
+        return View("Register");
         }
     }
 
