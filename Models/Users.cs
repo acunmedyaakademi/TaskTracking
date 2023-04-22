@@ -12,11 +12,12 @@ namespace TaskTracking.Models
         public int Task_id { get; set; }
         public int Assigning_the_job { get; set; }
         public DateTime Create_on { get; set; }
-		public int active_task { get; set; }
-		public int End_on { get; set; }
+		public int Is_active { get; set; }
+		public int Is_end { get; set; }
         public bool Is_confirm { get; set;}
 
-	}
+        public string Mail_code { get; set; }
+    }
     public class UserCreate
     {
         [Required]

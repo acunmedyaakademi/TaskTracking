@@ -11,42 +11,66 @@ namespace TaskTracking.Controllers
 
         public IActionResult Login()
         {
+            if (HttpContext.Session.GetString("loginEmail") != null)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+
             return View();
         }
 
+        [ValidateAntiForgeryToken]
         [HttpPost]
         public IActionResult Login(UsersLogin login)
         {
-          
-
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            if (HttpContext.Session.GetString("loginEmail") != null)
             {
-                connection.Open();
-
-
-
-                var command = new SqlCommand("select * from Users where email = @Email and password = @Password and is_confirm =@Is_confirm ", connection);
-                command.Parameters.AddWithValue("@Email", login.Email);
-                command.Parameters.AddWithValue("@Password", login.Password);
-                command.Parameters.AddWithValue("@@Is_confirm", login.Is_confirm);
-
-                var reader = command.ExecuteReader();
-
-                var pas = login.Password;
-                var mail = login.Email;
-                var verify = login.Is_confirm;
-
-                if (verify = true && mail=="@Email" && pas =="@Password") 
-                {
-                    return Content("1");
-                }
-                else
-                {
-                    return Content("0");
-                }
+                return RedirectToAction("Index", "Home");
             }
 
-                
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    connection.Open();
+
+
+
+                    var command = new SqlCommand("select * from Users where email = @Email and password = @Password ", connection);
+                    command.Parameters.AddWithValue("@Email", login.Email);
+                    command.Parameters.AddWithValue("@Password", login.Password);
+
+
+                    var reader = command.ExecuteReader();
+
+
+
+                    if (reader.HasRows)
+                    {
+                        reader.Read();
+                        var verify = reader.GetBoolean(10);
+
+                        if (verify)
+
+                            HttpContext.Session.SetString("loginEmail",login.Email);
+
+                            return RedirectToAction("Index","Home");
+
+
+                    }
+
+                    return Content("0");
+                }
+
+            }
+            catch (Exception)
+            {
+
+                return Content("0");
+            }
+
+
+
         }
 
 
@@ -57,6 +81,7 @@ namespace TaskTracking.Controllers
             return View();
         }
 
+        [ValidateAntiForgeryToken]
         [HttpPost]
         public IActionResult SignUp(UserCreate create)
         {
@@ -75,11 +100,17 @@ namespace TaskTracking.Controllers
                 command.ExecuteNonQuery();
             }
 
-                return Content("1");
+            return Content("1");
+        }
+        public IActionResult Logout() 
+        {
+            HttpContext.Session.Remove("loginEmail");
+
+            return RedirectToAction("Login","Account");
         }
     }
 
     //Selahattin
 
-    
+
 }

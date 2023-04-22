@@ -15,6 +15,10 @@ namespace TaskTracking.Controllers
 
 		public IActionResult Index()
 		{
+			if (HttpContext.Session.GetString("loginEmail") == null)
+			{
+				return RedirectToAction("Login", "Account");
+			}
 			return View();
 		}
 
@@ -28,10 +32,7 @@ namespace TaskTracking.Controllers
 		{
 			return View("Detay");
 		}
-        public IActionResult NotFound()
-        {
-            return View("404");
-        }
+
 
 
     }
