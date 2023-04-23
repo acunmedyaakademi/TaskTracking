@@ -1,4 +1,5 @@
-﻿@{
+﻿@model TaskTracking.Models.TaskListModel
+@{
     ViewData["Title"] = "Anasayfa";
 }
 
@@ -23,7 +24,7 @@
                     <div class="card bg-warning text-white mb-4">
                         <div class="card-body">Warning Card</div>
                         <div class="card-footer d-flex align-items-center justify-content-between">
-                            <a class="small text-white stretched-link" href="#">View Details</a>
+                            <a class="small text-white stretched-link" href="@Url.Action("AllList","Table")">TaskList</a>
                             <div class="small text-white"><i class="fas fa-angle-right"></i></div>
                         </div>
                     </div>
@@ -64,21 +65,24 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr data-toggle="collapse" data-target="#ahmet-detay">
-                                        <td>Ahmet</td>
-                                        <td>5</td>
-                                        <td>3</td>
-                                        <td>8</td>
-                                    </tr>
-                                    <tr id="ahmet-detay" class="collapse">
-                                        <td colspan="4">
-                                            <p><strong>Ahmet</strong> adlı kişinin iş detayları:</p>
-                                            <ul>
-                                                <li>Proje A: 3 tamamlanan, 2 aktif iş</li>
-                                                <li>Proje B: 0 tamamlanan, 3 aktif iş</li>
-                                            </ul>
-                                        </td>
-                                    </tr>
+                                 @* @foreach (var item in Model)
+                                    {
+                                        <tr data-toggle="collapse" data-target="#ahmet-detay">
+                                            <td>@item.First_name @item.Last_name</td>
+                                            <td>5</td>
+                                            <td>3</td>
+                                            <td>8</td>
+                                        </tr>
+                                        <tr id="ahmet-detay" class="collapse">
+                                            <td colspan="4">
+                                                <p><strong>Ahmet</strong> adlı kişinin iş detayları:</p>
+                                                <ul>
+                                                    <li>Proje A: 3 tamamlanan, 2 aktif iş</li>
+                                                    <li>Proje B: 0 tamamlanan, 3 aktif iş</li>
+                                                </ul>
+                                            </td>
+                                        </tr>
+                                    }*@
                                     <tr data-toggle="collapse" data-target="#mehmet-detay">
                                         <td>Mehmet</td>
                                         <td>3</td>

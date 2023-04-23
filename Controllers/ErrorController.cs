@@ -8,5 +8,9 @@ namespace TaskTracking.Controllers
         {
             return View();
         }
+
+        public IActionResult NotModified() {
+            return View();
+        }
     }
 }

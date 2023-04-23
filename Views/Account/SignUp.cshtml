@@ -23,37 +23,37 @@
                     <div class="row justify-content-center">
                         <div class="col-lg-7">
                             <div class="card shadow-lg border-0 rounded-lg mt-5">
-                                <div class="card-header"><h3 class="text-center font-weight-light my-4">Create Account</h3></div>
+                                <div class="card-header"><h3 class="text-center font-weight-light my-4">Kayıt Ol</h3></div>
                                 <div class="card-body">
-                                    <form action="SignUp" method="post">
+                                    <form asp-action="SignUp" asp-controller="Account" method="post">
                                         <div class="row mb-3">
                                             <div class="col-md-6">
                                                 <div class="form-floating mb-3 mb-md-0">
-                                                    <input class="form-control" id="inputFirstName" type="text" placeholder="İsim" asp-for="First_name" required/>
+                                                    <input class="form-control" id="inputFirstName" type="text" placeholder="İsim" name="First_name" required />
                                                     <label for="inputFirstName">İsim</label>
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-floating">
-                                                    <input class="form-control" id="inputLastName" type="text" placeholder="Soyisim" asp-for="Last_name" required/>
+                                                    <input class="form-control" id="inputLastName" type="text" placeholder="Soyisim" name="Last_name" required />
                                                     <label for="inputLastName">Soyisim</label>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="form-floating mb-3">
-                                            <input class="form-control" id="inputEmail" type="email" placeholder="örnek@example.com" asp-for="Email" required/>
-                                            <label for="inputEmail">Email adres</label>
+                                            <input class="form-control" id="inputEmail" type="email" placeholder="örnek@example.com" name="Email" required />
+                                            <label for="inputEmail">Email adresi</label>
                                         </div>
                                         <div class="row mb-3">
                                             <div class="col-md-6">
                                                 <div class="form-floating mb-3 mb-md-0">
-                                                    <input class="form-control" id="inputPassword" type="password" placeholder="Parola" asp-for="Password" required/>
+                                                    <input class="form-control" id="inputPassword" type="password" placeholder="Parola" name="Password"  required />
                                                     <label for="inputPassword">Parola</label>
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-floating mb-3 mb-md-0">
-                                                    <input class="form-control" id="inputPasswordConfirm" type="password" placeholder="Parolayı Onayı" />
+                                                    <input class="form-control" id="inputPasswordConfirm" type="password" placeholder="Parolayı Onayı" name="Password" />
                                                     <label for="inputPasswordConfirm">Parolayı Onayı</label>
                                                 </div>
                                             </div>
@@ -66,7 +66,7 @@
                                     </form>
                                 </div>
                                 <div class="card-footer text-center py-3">
-                                    <div class="small"><a href="login.html">Have an account? Go to login</a></div>
+                                    <div class="small"><a href="@Url.Action("Login","Account")">Bir üyeliğin var mı? <strong>Giriş yap</strong></a></div>
                                 </div>
                             </div>
                         </div>

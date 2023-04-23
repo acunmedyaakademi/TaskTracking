@@ -1,9 +1,6 @@
-﻿@model TaskTracking.Models.UsersLogin
-@{
-    ViewData["Title"] = "Login";
+﻿@{
     Layout = null;
 }
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -13,7 +10,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-    <title>Giriş - Task Tracking System</title>
+    <title>Password Reset - SB Admin</title>
     <link href="/css/styles.css" rel="stylesheet" />
     <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
 </head>
@@ -25,26 +22,34 @@
                     <div class="row justify-content-center">
                         <div class="col-lg-5">
                             <div class="card shadow-lg border-0 rounded-lg mt-5">
-                                <div class="card-header"><h3 class="text-center font-weight-light my-4">Giriş</h3></div>
+                                <div class="card-header"><h3 class="text-center font-weight-light my-4">Şifre Yenileme</h3></div>
                                 <div class="card-body">
-                                    <form asp-action="Login" asp-controller="Account" method="post">
+ 
+                                    <form asp-action="ControlCode" asp-controller="Account" method="post">
                                         <div class="form-floating mb-3">
-                                            <input class="form-control" id="inputEmail" type="email" placeholder="örnek@example.com" asp-for="Email" required/>
-                                            <label for="inputEmail">Mail Adresi</label>
+                                            <input class="form-control" id="inputEmail" type="email" placeholder="name@example.com" name="Email" />
+                                            <label for="inputEmail">Email Adresiniz</label>
                                         </div>
                                         <div class="form-floating mb-3">
-                                            <input class="form-control" id="inputPassword" type="password" placeholder="Password" asp-for="Password" required/>
-                                            <label for="inputPassword">Parola</label>
+                                            <input class="form-control" id="inputEmail" type="text" placeholder="123456" name="Mail_code" />
+                                            <label for="inputEmail">Onay Kodu</label>
                                         </div>
-                                        
+                                        <div class="form-floating mb-3">
+                                            <input class="form-control" id="inputEmail" type="password" placeholder="1234567" name="Password" />
+                                            <label for="inputEmail">Yeni Şifreniz</label>
+                                        </div>
+                                        <div class="form-floating mb-3">
+                                            <input class="form-control" id="inputEmail" type="password" placeholder="1234567" name="Password" />
+                                            <label for="inputEmail">Yeni Şifre Tekrarı</label>
+                                        </div>
                                         <div class="d-flex align-items-center justify-content-between mt-4 mb-0">
-                                            <a class="small" href="Account/ForgotPassword">Şifreni mi unuttun?</a>
-                                            <input class="btn btn-primary" type="submit" value="Giriş" />
+                                            <a class="small" href="@Url.Action("Login","Account")">Giriş sayfasına geri dön</a>
+                                            <input type="submit" value="Şifreyi Yenile" />
                                         </div>
                                     </form>
                                 </div>
                                 <div class="card-footer text-center py-3">
-                                    <div class="small"><a href="@Url.Action("SignUp","Account")">Kayıtlı değilmisin? Hadi sende kayıt ol!</a></div>
+                                    <div class="small"><a href="Account/SignUp">Kayıtlı değilmisin? Hadi sende kayıt ol!</a></div>
                                 </div>
                             </div>
                         </div>

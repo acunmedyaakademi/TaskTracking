@@ -17,6 +17,8 @@ namespace TaskTracking.Models
         public bool Is_confirm { get; set;}
 
         public string Mail_code { get; set; }
+
+      
     }
     public class UserCreate
     {
@@ -46,6 +48,22 @@ namespace TaskTracking.Models
         public string Password { get; set; }
 
         public bool Is_confirm { get; set; }
+    }
+    public class UserSendCode {
+        public string Email { get; set; }
+       
+    }
+    public class ControlCode
+    {
+        public string Email { get; set; }
+        public string Password { get; set; }
+        public string Mail_code { get; set; }
+
+    }
+    public class VerifyCode
+    {
+        public string Email { get; set; }
+        public string Mail_code { get; set; }
     }
     
 }

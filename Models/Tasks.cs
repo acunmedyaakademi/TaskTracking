@@ -12,5 +12,9 @@
         public DateTime Create_on { get; set; }
         public DateTime Update_on { get; set; }
         public DateTime End_on { get; set; }
+
+        public  int id { get; set; }
+        public string First_name { get; set; }
+        public string Last_name { get; set; }
     }
 }

@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using MimeKit;
 using System.Data.SqlClient;
+using System.Reflection.PortableExecutable;
 using TaskTracking.Models;
 
 namespace TaskTracking.Controllers
@@ -7,7 +9,7 @@ namespace TaskTracking.Controllers
     public class AccountController : Controller
     {
         private readonly string connectionString = "Server=104.247.162.242\\MSSQLSERVER2017;Database=akadem58_tadimrehberi;User Id=akadem58_tr;Password=8C4ra!n07;TrustServerCertificate=True";
-
+        
 
         public IActionResult Login()
         {
@@ -52,14 +54,14 @@ namespace TaskTracking.Controllers
 
                         if (verify)
 
-                            HttpContext.Session.SetString("loginEmail",login.Email);
+                            HttpContext.Session.SetString("loginEmail", login.Email);
 
-                            return RedirectToAction("Index","Home");
+                        return RedirectToAction("Index", "Home");
 
 
                     }
 
-                    return Content("0");
+                    return RedirectToAction("Index", "Error");
                 }
 
             }
@@ -98,19 +100,111 @@ namespace TaskTracking.Controllers
 
 
                 command.ExecuteNonQuery();
+
+
+                if (ModelState.IsValid)
+                {
+                    VerifyMail mail = new VerifyMail();
+                    string code = mail.getCode(create.Email);
+                    mail.SendMail(create.Email, code);
+
+
+                }
+                return RedirectToAction("VerifyCode","Account");
             }
 
-            return Content("1");
+
         }
-        public IActionResult Logout() 
+        public IActionResult Logout()
         {
             HttpContext.Session.Remove("loginEmail");
 
+            return RedirectToAction("Login", "Account");
+        }
+
+        public IActionResult ForgotPassword() { return View(); }
+
+        [ValidateAntiForgeryToken]
+        [HttpPost]
+        public IActionResult ForgotPassword(UserSendCode model)
+        {
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+                var command = new SqlCommand("select * from Users where email = @Email  ", connection);
+                command.Parameters.AddWithValue("@Email", model.Email);
+                command.ExecuteNonQuery();
+                var reader = command.ExecuteReader();
+                if (reader.HasRows)
+                {
+                    VerifyMail mail = new VerifyMail();
+                    string code = mail.getCode(model.Email);
+                    mail.SendMail(model.Email, code);
+
+
+                }
+                return RedirectToAction("ControlCode");
+            }
+
+        }
+
+        public IActionResult ControlCode()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult ControlCode(ControlCode code)
+        {
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+                var command = new SqlCommand("Update Users Set password = @Password where email = @Email and mail_code = @Mail_code ", connection);
+                command.Parameters.AddWithValue("@Email", code.Email);
+                command.Parameters.AddWithValue("@Mail_code", code.Mail_code);
+                command.Parameters.AddWithValue("@Password", code.Password);
+                int row = command.ExecuteNonQuery();
+                if (row == 0)
+                {
+                    return RedirectToAction("NotModified","Error");
+                }
+
+            }
+
+
             return RedirectToAction("Login","Account");
         }
+        public IActionResult VerifyCode()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult VerifyCode(VerifyCode verify)
+        {
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+
+                connection.Open();
+                var command = new SqlCommand("Update Users Set is_confirm = 1 where email = @Email and mail_code = @Mail_code ", connection);
+                command.Parameters.AddWithValue("@Email", verify.Email);
+                command.Parameters.AddWithValue("@Mail_code", verify.Mail_code);
+                int row = command.ExecuteNonQuery();
+                if (row == 0)
+                {
+                    return RedirectToAction("NotModified","Error");
+                }
+
+
+            }
+
+            return RedirectToAction("Login", "Account");
+
+
+        }
+
+        //Selahattin
+
+
     }
-
-    //Selahattin
-
-
 }

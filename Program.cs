@@ -8,7 +8,7 @@ namespace TaskTracking
 
 			// Add services to the container.
 			builder.Services.AddControllersWithViews();
-
+            builder.Services.AddHttpContextAccessor();
             builder.Services.AddSession(options =>
             {
                 options.IdleTimeout = TimeSpan.FromMinutes(30);
