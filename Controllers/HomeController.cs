@@ -24,8 +24,8 @@ namespace TaskTracking.Controllers
             }
             string LoginMail = HttpContext.Session.GetString("loginEmail");
             var TaskItem = new TaskListModel();
-            var UsersItem = new Users();
-            int toplam = UsersItem.Is_active + UsersItem.Is_end;
+           
+           
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
@@ -39,9 +39,13 @@ namespace TaskTracking.Controllers
                     List<Users> users = new List<Users>();
                     while (reader.Read())
                     {
+<<<<<<< HEAD
                         var user = new Users(); // Create a new instance for each user
 
 
+=======
+                        Users UsersItem = new Users();
+>>>>>>> 9ef5ca48a9f02183432eff9af09c6aa3d6331f39
                         UsersItem.First_name = reader.GetString(0);
                         UsersItem.Last_name = reader.GetString(1);
                         UsersItem.Is_active = reader.GetInt32(2);
