@@ -65,55 +65,17 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                 @* @foreach (var item in Model)
+                                  @foreach (var item in Model.Users)
                                     {
                                         <tr data-toggle="collapse" data-target="#ahmet-detay">
                                             <td>@item.First_name @item.Last_name</td>
-                                            <td>5</td>
-                                            <td>3</td>
-                                            <td>8</td>
+                                            <td>@item.Is_active</td>
+                                            <td>@item.Is_end</td>
+                                            <td></td>
                                         </tr>
-                                        <tr id="ahmet-detay" class="collapse">
-                                            <td colspan="4">
-                                                <p><strong>Ahmet</strong> adlı kişinin iş detayları:</p>
-                                                <ul>
-                                                    <li>Proje A: 3 tamamlanan, 2 aktif iş</li>
-                                                    <li>Proje B: 0 tamamlanan, 3 aktif iş</li>
-                                                </ul>
-                                            </td>
-                                        </tr>
-                                    }*@
-                                    <tr data-toggle="collapse" data-target="#mehmet-detay">
-                                        <td>Mehmet</td>
-                                        <td>3</td>
-                                        <td>5</td>
-                                        <td>8</td>
-                                    </tr>
-                                    <tr id="mehmet-detay" class="collapse">
-                                        <td colspan="4">
-                                            <p><strong>Mehmet</strong> adlı kişinin iş detayları:</p>
-                                            <ul>
-                                                <li>Proje X: 2 tamamlanan, 1 aktif iş</li>
-                                                <li>Proje Y: 3 tamamlanan, 2 aktif iş</li>
-                                                <li>Proje Z: 0 tamamlanan, 0 aktif iş</li>
-                                            </ul>
-                                        </td>
-                                    </tr>
-                                    <tr data-toggle="collapse" data-target="#ayse-detay">
-                                        <td>Ayşe</td>
-                                        <td>4</td>
-                                        <td>2</td>
-                                        <td>6</td>
-                                    </tr>
-                                    <tr id="ayse-detay" class="collapse">
-                                        <td colspan="4">
-                                            <p><strong>Ayşe</strong> adlı kişinin iş detayları:</p>
-                                            <ul>
-                                                <li>Proje K: 4 tamamlanan, 0 aktif iş</li>
-                                                <li>Proje L: 0 tamamlanan, 2 aktif iş</li>
-                                            </ul>
-                                        </td>
-                                    </tr>
+                                      
+                                    }
+                                   
                                 </tbody>
                             </table>
                         </div>
