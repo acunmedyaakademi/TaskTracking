@@ -39,12 +39,14 @@ namespace TaskTracking.Controllers
                     List<Users> users = new List<Users>();
                     while (reader.Read())
                     {
-                        
+                        var user = new Users(); // Create a new instance for each user
+
+
                         UsersItem.First_name = reader.GetString(0);
                         UsersItem.Last_name = reader.GetString(1);
                         UsersItem.Is_active = reader.GetInt32(2);
                         UsersItem.Is_end = reader.GetInt32(3);
-                        users.Add(UsersItem);
+                        users.Add(user);
                     }
                     TaskItem.Users = users;
                     connection.Close();
