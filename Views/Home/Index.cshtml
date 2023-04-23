@@ -93,56 +93,28 @@
                                         <th>İş</th>
                                         <th>Durumu</th>
                                         <th>Atayan</th>
+                          
                                         <th>Son Güncelleme</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr data-toggle="collapse" data-target="#ahmet-detay">
-                                        <td>Ahmet</td>
-                                        <td>5</td>
-                                        <td>3</td>
-                                        <td>8</td>
+                                    @foreach (var item in Model.TaskList)
+                                    {
+                                        <tr data-toggle="collapse" >
+                                        <td>@item.Title</td>
+                                        <td>@if (item.state == true)
+                                                {
+                                                <td>Aktif</td>
+                                                }else
+                                                {
+                                                <td>Tamamlandı</td>
+                                                }</td>
+                                        <td>@item.First_name @item.Last_name</td>
+                                        <td>@item.Update_on</td>
                                     </tr>
-                                    <tr id="ahmet-detay" class="collapse">
-                                        <td colspan="4">
-                                            <p><strong>Ahmet</strong> adlı kişinin iş detayları:</p>
-                                            <ul>
-                                                <li>Proje A: 3 tamamlanan, 2 aktif iş</li>
-                                                <li>Proje B: 0 tamamlanan, 3 aktif iş</li>
-                                            </ul>
-                                        </td>
-                                    </tr>
-                                    <tr data-toggle="collapse" data-target="#mehmet-detay">
-                                        <td>Mehmet</td>
-                                        <td>3</td>
-                                        <td>5</td>
-                                        <td>8</td>
-                                    </tr>
-                                    <tr id="mehmet-detay" class="collapse">
-                                        <td colspan="4">
-                                            <p><strong>Mehmet</strong> adlı kişinin iş detayları:</p>
-                                            <ul>
-                                                <li>Proje X: 2 tamamlanan, 1 aktif iş</li>
-                                                <li>Proje Y: 3 tamamlanan, 2 aktif iş</li>
-                                                <li>Proje Z: 0 tamamlanan, 0 aktif iş</li>
-                                            </ul>
-                                        </td>
-                                    </tr>
-                                    <tr data-toggle="collapse" data-target="#ayse-detay">
-                                        <td>Ayşe</td>
-                                        <td>4</td>
-                                        <td>2</td>
-                                        <td>6</td>
-                                    </tr>
-                                    <tr id="ayse-detay" class="collapse">
-                                        <td colspan="4">
-                                            <p><strong>Ayşe</strong> adlı kişinin iş detayları:</p>
-                                            <ul>
-                                                <li>Proje K: 4 tamamlanan, 0 aktif iş</li>
-                                                <li>Proje L: 0 tamamlanan, 2 aktif iş</li>
-                                            </ul>
-                                        </td>
-                                    </tr>
+                                    }
+                                    
+                                   
                                 </tbody>
                             </table>
                         </div>
@@ -157,50 +129,25 @@
                         <div class="card mb-4">
                             <div class="container">
                                 <h2> Son Yorumlar</h2>
-                                <div class="card mb-3">
+                                @foreach (var item in Model.Comment)
+                                {
+                                      <div class="card mb-3">
                                     <div class="card-body">
-                                        <h5 class="card-title">John Doe</h5>
+                                        
+                                            <h5 class="card-title">@item.Title</h5>
                                         <p class="card-text">
-                                            Lorem ipsum dolor sit amet, consectetur adipiscing
-                                            elit. Nunc id scelerisque urna. Nam eget nisl enim. Vestibulum ante
-                                            ipsum primis in faucibus orci luctus et ultrices posuere cubilia
-                                            curae; Donec bibendum velit eget purus aliquam, non eleifend tortor
-                                            elementum.
+                                           @item.Comments
                                         </p>
                                     </div>
                                     <div class="card-footer">
-                                        <small class="text-muted">2 gün önce</small>
-                                        <th> - <a href="#">Çiğdem</a></th>
+                                        <small class="text-muted">@item.Create_on</small>
+                                            <th> - <a href="#">@item.First_name @item.Last_name</a></th>
                                     </div>
                                 </div>
+                                }
+                              
 
-                                <div class="card mb-3">
-                                    <div class="card-body">
-                                        <h5 class="card-title">Jane Doe</h5>
-                                        <p class="card-text">
-                                            Sed in interdum urna. Duis tincidunt, quam a
-                                            maximus consequat, enim turpis eleifend odio, vel euismod odio velit
-                                            sit amet nulla. Quisque ullamcorper risus sed mauris ullamcorper, ac
-                                            malesuada enim posuere.
-                                        </p>
-                                    </div>
-                                    <div class="card-footer">
-                                        <small class="text-muted">1 gün önce</small>
-                                    </div>
-                                </div>
-
-                                <div class="card mb-3">
-                                    <div class="card-body">
-                                        <h5 class="card-title">Bob Smith</h5>
-                                        <p class="card-text">
-                                            Maecenas sed lacus non est fringilla commodo at non
-                                            nibh. Praesent et pellentesque quam. Donec ac magna in sapien
-                                            fermentum elementum.
-                                        </p>
-                                    </div>
-                                    <div class="card-footer">
-                                        <small class="text-muted">5 gün önce</small>
-                                    </div>
+                              
                                 </div>
                             </div>
 

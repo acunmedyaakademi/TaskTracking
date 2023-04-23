@@ -11,6 +11,8 @@
         public int id { get; set; }
         public string First_name { get; set; }
         public string Last_name { get; set; }
+
+        public string Title { get; set; }   
     }
     public class CommentList
     {
@@ -26,5 +28,6 @@
 
         public string Title { get; set; }
         public int task_id { get; set; }
+        
     }
 }
