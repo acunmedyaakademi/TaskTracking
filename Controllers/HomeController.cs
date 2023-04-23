@@ -40,7 +40,7 @@ namespace TaskTracking.Controllers
                     while (reader.Read())
                     {
 <<<<<<< HEAD
-                        var user = new Users(); // Create a new instance for each user
+                        var user = new Users(); 
 
 
 =======
