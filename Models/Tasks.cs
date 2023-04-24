@@ -42,5 +42,7 @@
         public DateTime Create_on { get; set; }
         public List<detayCommentItem> CommentItems { get; set; }
         public List<Tasks> taskItem { get; set; }
+        public List<detayUpdate> detayUpdate { get; set; }
+
     }
 }

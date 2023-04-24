@@ -76,10 +76,26 @@ namespace TaskTracking.Controllers
 		}
 
 		[HttpPost]
-		public IActionResult Index()
+		
+		public IActionResult Index(detayUpdate update)
 		{
+			using (SqlConnection connection = new SqlConnection(connectionString))
+			{
+				if (update.State == true)
+				{
+					var command = new SqlCommand("Update Users as u jOIN Tasks as t on u.task_id = t.id Set u.is_active = +1 , t.state = true where t.slug = @slug  ", connection);
+					command.Parameters.AddWithValue("@slug", update.Slug);
+					var ok = command.ExecuteNonQuery();
 
-			return View();
+				}
+				else
+				{
+					var command = new SqlCommand("Update Users as u jOIN Tasks as t on u.task_id = t.id Set u.is_end = +1 , t.state = true where t.slug = @slug  ", connection);
+				}
+
+
+				return View();
+			}
 		}
 	}
 }

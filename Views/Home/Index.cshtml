@@ -37,13 +37,16 @@
                                 <tbody>
 
                                   @foreach (var item in Model.Users)
-                                    {
-                                        <tr data-toggle="collapse" data-target="#ahmet-detay">
+                                    {  if (item.State == true)
+                                        {
+                                              <tr data-toggle="collapse" data-target="#ahmet-detay">
                                             <td>@item.First_name @item.Last_name</td>
                                             <td>@item.Is_active</td>
                                             <td>@item.Is_end</td>
                                             <td>@item.Is_sum</td>
                                         </tr>
+                                        }
+                                      
                                       
                                     }
                                    
