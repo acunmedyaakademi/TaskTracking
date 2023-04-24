@@ -1,4 +1,5 @@
 ﻿@model TaskTracking.Models.DetayList
+
 @{
     ViewData["Title"] = "Detay";
     
@@ -72,18 +73,24 @@
                                     <p class="card-text"><strong>Son güncellenme : </strong>@item.Update_on</p>
                                     <p class="card-text"><strong>İşin açılma tarihi : </strong>@item.Create_on</p>
                                 }
+                                @foreach (var item in Model.detayUpdate)
+                                {
+                                    
                                 
+                                <form asp-action="Index" asp-controller="Details" method="post">  
                                 <select class="form-select" aria-label="Default select example">
                                    
-                                    <option value="1" selected>Aktif</option>
-                                    <option value="2">Tamamlandı</option>
-                                    <button type="button" class="btn btn-outline-primary">Düzenle</button>
+                                    <option value="true" selected name="state">Aktif</option>
+                                    <option value="false" name="state">Tamamlandı</option>
+                                   
                                 </select>
                                 
                                 <br />
-                                <button type="button" class="btn btn-outline-primary">Düzenle</button>
+                                    <input type="submit" value="Düzenle" />
                                 <button type="button" class="btn btn-outline-dark">Başkasına Ata</button>
-                                <button type="button" class="btn btn-outline-warning">Sil</button>
+                                    <button type="submit" class="btn btn-outline-warning">Sil</button>
+                                    </form>
+                                }
 
                             </div>
                         </div>

@@ -18,8 +18,9 @@ namespace TaskTracking.Models
         public int Is_sum { get; set; }
 
         public string Mail_code { get; set; }
+        public bool State { get; set; }
 
-      
+
     }
     public class UserCreate
     {
@@ -65,6 +66,14 @@ namespace TaskTracking.Models
     {
         public string Email { get; set; }
         public string Mail_code { get; set; }
+    }
+    public class detayUpdate 
+    {
+        public int Is_active { get; set; }
+        public int Is_end{ get; set; }
+        public bool State { get; set; }
+        public string Slug { get; set; }    
+        public List<Tasks> tasksUpdate { get; set; }
     }
     
 }

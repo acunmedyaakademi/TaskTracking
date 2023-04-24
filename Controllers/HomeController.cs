@@ -33,7 +33,7 @@ namespace TaskTracking.Controllers
                 {
 
                     connection.Open();
-                    var command = new SqlCommand("SELECT first_name,last_name,is_active,is_end FROM Users ", connection); //Users model
+                    var command = new SqlCommand("SELECT u.first_name,u.last_name,u.is_active,u.is_end,t.state FROM Users as u JOIN Tasks as t on t.id = u.task_id ", connection); //Users model
                     var reader = command.ExecuteReader();
                     List<Users> users = new List<Users>();
                     while (reader.Read())
@@ -44,6 +44,7 @@ namespace TaskTracking.Controllers
                         UsersItem.Last_name = reader.GetString(1);
                         UsersItem.Is_active = reader.GetInt32(2);
                         UsersItem.Is_end = reader.GetInt32(3);
+                        UsersItem.State = reader .GetBoolean(4);
                         UsersItem.Is_sum = UsersItem.Is_end + UsersItem.Is_active;
                         users.Add(UsersItem);
                     }
