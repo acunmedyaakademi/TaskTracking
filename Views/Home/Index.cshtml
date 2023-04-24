@@ -8,8 +8,7 @@
         <div class="container-fluid px-4">
             <h1 class="mt-4">İş Takip Sistemi</h1>
            
-           <br />
-           <br />
+           
           
 
 
@@ -75,7 +74,7 @@
                                                 }</td>
                                         <td>@item.First_name @item.Last_name</td>
                                         <td>@item.Update_on</td>
-                                        <td><a href="/@item.Slug" class="btn btn-primary">Göster</a></td>
+                                        <td><a href="@Url.Action("Index","Details")" class="btn btn-primary">Göster</a></td>
                                     </tr>
                                     }
                                     
@@ -156,7 +155,6 @@
 
 
                                 <a href="@Url.Action("AllList","Table")" class=" btn btn-primary">Tümünü Göster</a>
-
                                 <br />
                                 <br />
 

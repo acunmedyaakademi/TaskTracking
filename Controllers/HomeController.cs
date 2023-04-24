@@ -53,7 +53,7 @@ namespace TaskTracking.Controllers
 
                     connection.Open();
                     List<TaskList> taskLists= new List<TaskList>();
-                    var command2 = new SqlCommand("SELECT t.title,t.state,t.update_on,u2.first_name,u2.last_name,t.slug From Tasks as t JOIN Users as u on t.users_id = u.id JOIN Users as u2 on t.[ assigning_the_job] = u2.id where u.email = @Email", connection);
+                    var command2 = new SqlCommand("SELECT t.title,t.state,t.update_on,u2.first_name,u2.last_name From Tasks as t JOIN Users as u on t.users_id = u.id JOIN Users as u2 on t.[ assigning_the_job] = u2.id where u.email = @Email", connection);
                     command2.Parameters.AddWithValue("@Email", LoginMail);
                     var reader2 = command2.ExecuteReader();
                     while (reader2.Read())
@@ -64,7 +64,6 @@ namespace TaskTracking.Controllers
                         taskList2.Update_on = reader2.GetDateTime(2);
                         taskList2.First_name= reader2.GetString(3);
                         taskList2.Last_name= reader2.GetString(4);
-                        taskList2.Slug = reader2.GetString(5);
                         
                         taskLists.Add(taskList2);
                     }

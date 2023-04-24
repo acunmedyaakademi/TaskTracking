@@ -34,13 +34,4 @@
         public string First_name { get; set; }
         public string Last_name { get; set; }
     }
-    public class DetayList
-    {
-        public int id { get; set; }
-        public string Title { get; set; }
-        public string Content { get; set; }
-        public DateTime Create_on { get; set; }
-        public List<detayCommentItem> CommentItems { get; set; }
-        public List<Tasks> taskItem { get; set; }
-    }
 }
