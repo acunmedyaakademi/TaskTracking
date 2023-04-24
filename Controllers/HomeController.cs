@@ -32,32 +32,28 @@ namespace TaskTracking.Controllers
                 try
                 {
 
-
                     connection.Open();
                     var command = new SqlCommand("SELECT first_name,last_name,is_active,is_end FROM Users ", connection); //Users model
                     var reader = command.ExecuteReader();
                     List<Users> users = new List<Users>();
                     while (reader.Read())
                     {
-
-                        
-
-
-
                         Users UsersItem = new Users();
 
                         UsersItem.First_name = reader.GetString(0);
                         UsersItem.Last_name = reader.GetString(1);
                         UsersItem.Is_active = reader.GetInt32(2);
                         UsersItem.Is_end = reader.GetInt32(3);
+                        UsersItem.Is_sum = UsersItem.Is_end + UsersItem.Is_active;
                         users.Add(UsersItem);
                     }
+
                     TaskItem.Users = users;
                     connection.Close();
 
                     connection.Open();
                     List<TaskList> taskLists= new List<TaskList>();
-                    var command2 = new SqlCommand("SELECT t.title,t.state,t.update_on,u2.first_name,u2.last_name From Tasks as t JOIN Users as u on t.users_id = u.id JOIN Users as u2 on t.[ assigning_the_job] = u2.id where u.email = @Email", connection);
+                    var command2 = new SqlCommand("SELECT t.title,t.state,t.update_on,u2.first_name,u2.last_name,t.slug From Tasks as t JOIN Users as u on t.users_id = u.id JOIN Users as u2 on t.[ assigning_the_job] = u2.id where u.email = @Email", connection);
                     command2.Parameters.AddWithValue("@Email", LoginMail);
                     var reader2 = command2.ExecuteReader();
                     while (reader2.Read())
@@ -68,6 +64,7 @@ namespace TaskTracking.Controllers
                         taskList2.Update_on = reader2.GetDateTime(2);
                         taskList2.First_name= reader2.GetString(3);
                         taskList2.Last_name= reader2.GetString(4);
+                        taskList2.Slug = reader2.GetString(5);
                         
                         taskLists.Add(taskList2);
                     }
@@ -92,29 +89,32 @@ namespace TaskTracking.Controllers
 
                         taskList.Add(taskItem);
 
-
                     }
                     TaskItem.Tasks= taskList;
                     connection.Close();
 
                     connection.Open();
-                    var command4 = new SqlCommand("select TOP(5) Tasks.title,Comment.comments,Comment.create_on,Users.first_name , Users.last_name from Comment  join Tasks  on Comment.task_id = Tasks.id join Users  on Tasks.users_id = Users.id order by Tasks.create_on desc", connection);
+                    var command4 = new SqlCommand("select TOP(5) Tasks.title,Comment.comments,Comment.create_on,Users.first_name , Users.last_name from Comment join Tasks on Comment.task_id = Tasks.id join Users  on Tasks.users_id = Users.id order by Tasks.create_on desc", connection);
                     var reader4 = command4.ExecuteReader();
 
                     var commentList = new List<Comment>();
+
                     while (reader4.Read())
                     {
-                        CommentList comment = new CommentList();
+                        var comment = new Comment();
                         comment.Title= reader4.GetString(0); 
                         comment.Comments = reader4.GetString(1);
                         comment.Create_on= reader4.GetDateTime(2);
                         comment.First_name= reader4.GetString(3);
                         comment.Last_name= reader4.GetString(4);
 
-                       
-                        TaskItem.Comment = commentList;
+                        commentList.Add(comment);
+                        
 
                     }
+
+                    TaskItem.Comment = commentList;
+
                     return View(TaskItem);
       
                     

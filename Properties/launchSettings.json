@@ -1,4 +1,4 @@
-﻿{
+{
   "iisSettings": {
     "windowsAuthentication": false,
     "anonymousAuthentication": true,
@@ -10,7 +10,6 @@
   "profiles": {
     "TaskTracking": {
       "commandName": "Project",
-      "dotnetRunMessages": true,
       "launchBrowser": true,
       "applicationUrl": "https://localhost:7262;http://localhost:5146",
       "environmentVariables": {

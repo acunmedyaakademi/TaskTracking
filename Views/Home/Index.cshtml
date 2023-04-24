@@ -7,47 +7,10 @@
     <main>
         <div class="container-fluid px-4">
             <h1 class="mt-4">İş Takip Sistemi</h1>
-            <ol class="breadcrumb mb-4">
-                <li class="breadcrumb-item active">Rapor</li>
-            </ol>
-            <div class="row">
-                <div class="col-xl-3 col-md-6">
-                    <div class="card bg-primary text-white mb-4">
-                        <div class="card-body">Primary Card</div>
-                        <div class="card-footer d-flex align-items-center justify-content-between">
-                            <a class="small text-white stretched-link" href="#">View Details</a>
-                            <div class="small text-white"><i class="fas fa-angle-right"></i></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-3 col-md-6">
-                    <div class="card bg-warning text-white mb-4">
-                        <div class="card-body">Warning Card</div>
-                        <div class="card-footer d-flex align-items-center justify-content-between">
-                            <a class="small text-white stretched-link" href="@Url.Action("AllList","Table")">TaskList</a>
-                            <div class="small text-white"><i class="fas fa-angle-right"></i></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-3 col-md-6">
-                    <div class="card bg-success text-white mb-4">
-                        <div class="card-body">Success Card</div>
-                        <div class="card-footer d-flex align-items-center justify-content-between">
-                            <a class="small text-white stretched-link" href="#">View Details</a>
-                            <div class="small text-white"><i class="fas fa-angle-right"></i></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-3 col-md-6">
-                    <div class="card bg-danger text-white mb-4">
-                        <div class="card-body">Danger Card</div>
-                        <div class="card-footer d-flex align-items-center justify-content-between">
-                            <a class="small text-white stretched-link" href="#">View Details</a>
-                            <div class="small text-white"><i class="fas fa-angle-right"></i></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+           
+           <br />
+           <br />
+          
 
 
             <div class="row">
@@ -65,13 +28,14 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+
                                   @foreach (var item in Model.Users)
                                     {
                                         <tr data-toggle="collapse" data-target="#ahmet-detay">
                                             <td>@item.First_name @item.Last_name</td>
                                             <td>@item.Is_active</td>
                                             <td>@item.Is_end</td>
-                                            <td></td>
+                                            <td>@item.Is_sum</td>
                                         </tr>
                                       
                                     }
@@ -93,8 +57,8 @@
                                         <th>İş</th>
                                         <th>Durumu</th>
                                         <th>Atayan</th>
-                          
                                         <th>Son Güncelleme</th>
+                                        <th>Detay</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -111,6 +75,7 @@
                                                 }</td>
                                         <td>@item.First_name @item.Last_name</td>
                                         <td>@item.Update_on</td>
+                                        <td><a href="/@item.Slug" class="btn btn-primary">Göster</a></td>
                                     </tr>
                                     }
                                     
@@ -129,26 +94,23 @@
                         <div class="card mb-4">
                             <div class="container">
                                 <h2> Son Yorumlar</h2>
-                                @foreach (var item in Model.Comment)
-                                {
-                                      <div class="card mb-3">
-                                    <div class="card-body">
-                                        
+                                <div class="card mb-3">
+                                    @foreach (var item in Model.Comment)
+                                    {
+                                        <div class="card-body">
                                             <h5 class="card-title">@item.Title</h5>
-                                        <p class="card-text">
-                                           @item.Comments
-                                        </p>
-                                    </div>
-                                    <div class="card-footer">
-                                        <small class="text-muted">@item.Create_on</small>
+                                            <p class="card-text">
+                                                @item.Comments
+                                            </p>
+                                        </div>
+                                        <div class="card-footer">
+                                            <small class="text-muted">@item.Create_on</small>
                                             <th> - <a href="#">@item.First_name @item.Last_name</a></th>
-                                    </div>
-                                </div>
-                                }
-                              
+                                        </div>
+                                    }
 
-                              
                                 </div>
+
                             </div>
 
                         </div>
@@ -161,7 +123,6 @@
                                 <table class="table table-hover">
                                     <thead>
                                         <tr>
-                                            <th>#</th>
                                             <th>İş</th>
                                             <th>Durum</th>
                                             <th>Atayan</th>
@@ -169,30 +130,36 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>Web sitesi yenileme</td>
-                                            <td><span class="badge badge-success">Tamamlandı</span></td>
-                                            <td>John Doe</td>
-                                            <td>2 gün önce</td>
+                                        @foreach (var item in Model.Tasks)
+                                        {
+                                                   <tr>
+                                            <td>@item.Title</td>
+                                            @if (item.state == true)
+                                            {
+                                                <td>Aktif</td>
+                                            }
+                                            else
+                                            {
+                                                <td>Tamamlandı</td>
+                                            }
+                                            <td>@item.First_name  @item.Last_name</td>
+                                            <td>@item.Update_on</td>
+
                                         </tr>
-                                        <tr>
-                                            <td>2</td>
-                                            <td>Yazılım Geliştirme</td>
-                                            <td><span class="badge badge-warning">Devam Ediyor</span></td>
-                                            <td>Jane Smith</td>
-                                            <td>1 gün önce</td>
-                                        </tr>
-                                        <tr>
-                                            <td>3</td>
-                                            <td>Mobil Uygulama Geliştirme</td>
-                                            <td><span class="badge badge-danger">Önemli</span></td>
-                                            <td>Bob Johnson</td>
-                                            <td>5 gün önce</td>
-                                        </tr>
+                                        }
+                                 
+                                        
+                                   
+                                        
                                     </tbody>
                                 </table>
+<<<<<<< HEAD
                                 <a href="/Table/AllList" class="btn btn-primary">Tümünü Göster</a>
+=======
+
+
+                                <a href="@Url.Action("AllList","Table")" class=" btn btn-primary">Tümünü Göster</a>
+>>>>>>> 8856bb7e99a337d8351e6694eb9bc6fd44e7eb78
                                 <br />
                                 <br />
 

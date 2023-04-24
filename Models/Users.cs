@@ -15,6 +15,7 @@ namespace TaskTracking.Models
 		public int Is_active { get; set; }
 		public int Is_end { get; set; }
         public bool Is_confirm { get; set;}
+        public int Is_sum { get; set; }
 
         public string Mail_code { get; set; }
 
