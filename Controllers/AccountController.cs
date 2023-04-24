@@ -61,7 +61,12 @@ namespace TaskTracking.Controllers
 
                     }
 
+<<<<<<< Updated upstream
                     return RedirectToAction("Index", "Error");
+=======
+                    return View("../Home/Index");
+                    //return Content("0");
+>>>>>>> Stashed changes
                 }
 
             }
