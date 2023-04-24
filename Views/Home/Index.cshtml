@@ -94,8 +94,8 @@
                                         <th>İş</th>
                                         <th>Durumu</th>
                                         <th>Atayan</th>
-                          
                                         <th>Son Güncelleme</th>
+                                        <th>Detay</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -112,6 +112,7 @@
                                                 }</td>
                                         <td>@item.First_name @item.Last_name</td>
                                         <td>@item.Update_on</td>
+                                        <td><a href="@Url.Action("Index","Details")" class="btn btn-primary">Göster</a></td>
                                     </tr>
                                     }
                                     
