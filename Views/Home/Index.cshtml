@@ -7,9 +7,17 @@
     <main>
         <div class="container-fluid px-4">
             <h1 class="mt-4">İş Takip Sistemi</h1>
+
            
-           
+           <br />
+           <br />
           
+
+            <ol class="breadcrumb mb-4">
+                <li class="breadcrumb-item active">Rapor</li>
+            </ol>
+           
+
 
 
             <div class="row">
@@ -74,7 +82,7 @@
                                                 }</td>
                                         <td>@item.First_name @item.Last_name</td>
                                         <td>@item.Update_on</td>
-                                        <td><a href="@Url.Action("Index","Details")" class="btn btn-primary">Göster</a></td>
+                                        <td><a href="/@item.Slug" class="btn btn-primary">Göster</a></td>
                                     </tr>
                                     }
                                     
@@ -119,6 +127,7 @@
                         <div class="card mb-4">
                             <div class="container">
                                 <h2>Tüm İşler</h2>
+
                                 <table class="table table-hover">
                                     <thead>
                                         <tr>
@@ -130,8 +139,10 @@
                                     </thead>
                                     <tbody>
                                         @foreach (var item in Model.Tasks)
-                                        {
-                                                   <tr>
+                                    {
+                                         <tr>
+
+
                                             <td>@item.Title</td>
                                             @if (item.state == true)
                                             {
@@ -144,6 +155,7 @@
                                             <td>@item.First_name  @item.Last_name</td>
                                             <td>@item.Update_on</td>
 
+
                                         </tr>
                                         }
                                  
@@ -153,8 +165,8 @@
                                     </tbody>
                                 </table>
 
-
                                 <a href="@Url.Action("AllList","Table")" class=" btn btn-primary">Tümünü Göster</a>
+
                                 <br />
                                 <br />
 
