@@ -30,13 +30,4 @@
         public int task_id { get; set; }
         
     }
-    public class detayCommentItem
-    {
-        public string comment { get; set; }
-
-        public string First_name { get; set; }
-        public string Last_name { get; set; }
-
-        public DateTime create_on { get; set; }
-    }
 }
