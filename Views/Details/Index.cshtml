@@ -1,4 +1,5 @@
-﻿@{
+﻿@model TaskTracking.Models.DetayList
+@{
     ViewData["Title"] = "Detay";
     
 }
@@ -18,20 +19,28 @@
             <div class="row">
                 <div class="col-xl-8">
                     <div class="container">
-                        <h2>Bulaşıklar yıkanacak</h2>
-                        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nulla, tenetur quidem beatae at aliquid quis ipsum repellendus reprehenderit vel consequatur? Neque culpa corrupti tenetur tempora id quam, commodi labore est.</p>
+                        <h2>@Model.Title</h2>
+                        <p>@Model.Content</p>
                         <hr>
-                        <h4>Yorumlar</h4>
-                        <ul class="list-unstyled">
+                        <h4>Yorumlar</h4>  
+                        @if (Model.CommentItems != null)
+                        { @foreach (var item in Model.CommentItems)
+                            {
+                                 <ul class="list-unstyled">
                             <li class="media">
                                 <div class="media-body">
-                                    <h5 class="mt-0 mb-1"><a href=""> Selahattin Demir</a>&nbsp;&nbsp;&nbsp;<small><i>21-04-2023</i></small></h5>
-                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi harum omnis vero deserunt fugiat accusamus ullam quod, officiis tenetur impedit illum quidem commodi facere dolore, earum assumenda. Id, fugiat nemo.
+                                    <h5 class="mt-0 mb-1"><a href=""> @item.First_name @item.Last_name</a>&nbsp;&nbsp;&nbsp;<small><i>21-04-2023</i></small></h5>
+                                   @item.comment
                                 </div>
                             </li>
                         </ul>
+                            }
+
+                        }
+                       
                         <hr>
                         <h4>Yorum Yap</h4>
+                      
                         <form>
                             <div class="form-group">
                                 <label for="yorum_yazan">Adınız:</label>
@@ -57,14 +66,20 @@
                         <div class="card mb-4   ">
                             <div class="card-body">
                                 <h5 class="card-title">İş Detayları</h5>
-                                <p class="card-text">Burada iş detayları yer alacak</p>
-                                <p class="card-text">Burada iş detayları yer alacak</p>
-                                <p class="card-text">Burada iş detayları yer alacak</p>
-                                <div class="form-check form-switch">
-                                    <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault" checked>
-                                    <label class="form-check-label"
-                                           for="flexSwitchCheckDefault">Tamamlandı/Aktif</label>
-                                </div>
+                                @foreach (var item in Model.taskItem)
+                                {
+                                    <p class="card-text"><strong>İşi Açan : </strong>@item.First_name @item.Last_name</p>
+                                    <p class="card-text"><strong>Son güncellenme : </strong>@item.Update_on</p>
+                                    <p class="card-text"><strong>İşin açılma tarihi : </strong>@item.Create_on</p>
+                                }
+                                
+                                <select class="form-select" aria-label="Default select example">
+                                   
+                                    <option value="1" selected>Aktif</option>
+                                    <option value="2">Tamamlandı</option>
+                                    
+                                </select>
+                                
                                 <br />
                                 <button type="button" class="btn btn-outline-primary">Düzenle</button>
                                 <button type="button" class="btn btn-outline-dark">Başkasına Ata</button>
