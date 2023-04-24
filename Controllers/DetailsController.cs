@@ -76,26 +76,33 @@ namespace TaskTracking.Controllers
 		}
 
 		[HttpPost]
-		
-		public IActionResult Index(detayUpdate update)
+        
+        public IActionResult DetayUpdate(bool state)
 		{
-			using (SqlConnection connection = new SqlConnection(connectionString))
-			{
-				if (update.State == true)
-				{
-					var command = new SqlCommand("Update Users as u jOIN Tasks as t on u.task_id = t.id Set u.is_active = +1 , t.state = true where t.slug = @slug  ", connection);
-					command.Parameters.AddWithValue("@slug", update.Slug);
-					var ok = command.ExecuteNonQuery();
-
-				}
-				else
-				{
-					var command = new SqlCommand("Update Users as u jOIN Tasks as t on u.task_id = t.id Set u.is_end = +1 , t.state = true where t.slug = @slug  ", connection);
-				}
+			//using (SqlConnection connection = new SqlConnection(connectionString))
+			//{
+			//	string email =HttpContext.Session.GetString("loginEmail");
 
 
+   //             if (state == true)
+			//	{
+			//		var command = new SqlCommand("Update Users as u SET jOIN Tasks as t on u.task_id = t.id  u.is_active = +1 , t.state = true where u.email = @Email  ", connection);
+			//		command.Parameters.AddWithValue("@Emial", email);
+			//		 command.ExecuteNonQuery();
+
+
+			//		return RedirectToAction("Index","Details");
+
+			//	}
+			//	else
+			//	{
+			//		var command = new SqlCommand("Update Users as u jOIN Tasks as t on u.task_id = t.id Set u.is_end = +1 , t.state = true where t.slug = @slug  ", connection);
+			//	}
 				return View();
-			}
+
+				
+			
 		}
 	}
 }
+
