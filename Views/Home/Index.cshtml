@@ -65,13 +65,14 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+
                                   @foreach (var item in Model.Users)
                                     {
                                         <tr data-toggle="collapse" data-target="#ahmet-detay">
                                             <td>@item.First_name @item.Last_name</td>
                                             <td>@item.Is_active</td>
                                             <td>@item.Is_end</td>
-                                            <td></td>
+                                            <td>@item.Is_sum</td>
                                         </tr>
                                       
                                     }
@@ -129,26 +130,23 @@
                         <div class="card mb-4">
                             <div class="container">
                                 <h2> Son Yorumlar</h2>
-                                @foreach (var item in Model.Comment)
-                                {
-                                      <div class="card mb-3">
-                                    <div class="card-body">
-                                        
+                                <div class="card mb-3">
+                                    @foreach (var item in Model.Comment)
+                                    {
+                                        <div class="card-body">
                                             <h5 class="card-title">@item.Title</h5>
-                                        <p class="card-text">
-                                           @item.Comments
-                                        </p>
-                                    </div>
-                                    <div class="card-footer">
-                                        <small class="text-muted">@item.Create_on</small>
+                                            <p class="card-text">
+                                                @item.Comments
+                                            </p>
+                                        </div>
+                                        <div class="card-footer">
+                                            <small class="text-muted">@item.Create_on</small>
                                             <th> - <a href="#">@item.First_name @item.Last_name</a></th>
-                                    </div>
-                                </div>
-                                }
-                              
+                                        </div>
+                                    }
 
-                              
                                 </div>
+
                             </div>
 
                         </div>
