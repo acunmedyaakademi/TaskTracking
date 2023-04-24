@@ -7,10 +7,17 @@
     <main>
         <div class="container-fluid px-4">
             <h1 class="mt-4">İş Takip Sistemi</h1>
+<<<<<<< HEAD
            
            <br />
            <br />
           
+=======
+            <ol class="breadcrumb mb-4">
+                <li class="breadcrumb-item active">Rapor</li>
+            </ol>
+           
+>>>>>>> 50cc2bc8fdda6a99236e39a5c91181006e744166
 
 
             <div class="row">
@@ -120,9 +127,14 @@
                         <div class="card mb-4">
                             <div class="container">
                                 <h2>Tüm İşler</h2>
+
                                 <table class="table table-hover">
                                     <thead>
                                         <tr>
+<<<<<<< HEAD
+=======
+                                            
+>>>>>>> 50cc2bc8fdda6a99236e39a5c91181006e744166
                                             <th>İş</th>
                                             <th>Durum</th>
                                             <th>Atayan</th>
@@ -130,9 +142,17 @@
                                         </tr>
                                     </thead>
                                     <tbody>
+<<<<<<< HEAD
                                         @foreach (var item in Model.Tasks)
                                         {
                                                    <tr>
+=======
+
+                                        @foreach (var item in Model.Tasks)
+                                    {
+                                         <tr>
+
+>>>>>>> 50cc2bc8fdda6a99236e39a5c91181006e744166
                                             <td>@item.Title</td>
                                             @if (item.state == true)
                                             {
@@ -144,6 +164,7 @@
                                             }
                                             <td>@item.First_name  @item.Last_name</td>
                                             <td>@item.Update_on</td>
+<<<<<<< HEAD
 
                                         </tr>
                                         }
@@ -160,6 +181,15 @@
 
                                 <a href="@Url.Action("AllList","Table")" class=" btn btn-primary">Tümünü Göster</a>
 >>>>>>> 8856bb7e99a337d8351e6694eb9bc6fd44e7eb78
+=======
+                                        </tr>
+                                    }
+                                       
+                                       
+                                    </tbody>
+                                </table>
+                            <a href="@Url.Action("AllList","Table")" class="btn btn-primary">Tümünü Göster</a>
+>>>>>>> 50cc2bc8fdda6a99236e39a5c91181006e744166
                                 <br />
                                 <br />
 
